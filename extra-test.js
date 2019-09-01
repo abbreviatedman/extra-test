@@ -130,6 +130,111 @@ function containsDigit(string) {
   // return /\d/g.test(string);
 }
 
+function containsLowercaseLetter(string) {
+  // const lowercaseLetters = 'abcdefghijklmnopqrstuvwxyz';
+  // for (let i = 0; i < string.length; i++) {
+  //   if (lowercaseLetters.includes(string[i])) {
+  //     return true;
+  //   }
+  // }
+  
+  // return false;
+  
+  // Version using array methods:
+  // const lowercaseLetters = 'abcdefghijklmnopqrstuvwxyz';
+  // return string.split('').some((character) => {
+    //   return lowercaseLetters.includes(character);
+    // });  
+    
+  // Version using regex:
+  const regex = /[a-z]/g;
+  
+  return regex.test(string);
+}
+  
+function containsUppercaseLetter(string) {
+  const uppercaseLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  for (let i = 0; i < string.length; i++) {
+    if (uppercaseLetters.includes(string[i])) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+function isAlphanumeric(char) {
+  return containsLowercaseLetter(char)
+    || containsUppercaseLetter(char)
+    || containsDigit(char);
+}
+
+function containsNonAlphanumeric(string) {
+  for (let i = 0; i < string.length; i++) {
+    if (!isAlphanumeric(string[i])) {
+      return true;
+    }
+  }
+
+  return false;
+
+  // regex version:
+  // const regex = /[^A-Za-z0-9]/g;
+
+  // return regex.test(string);
+}
+
+function containsSpace(string) {
+  for (let i = 0; i < string.length; i++) {
+    if (string[i] === ' ') {
+      return true;
+    }
+  }
+
+  return false;
+
+  // regex version:
+  // const regex = /[ ]/g;
+  
+  // return regex.test(string);
+}
+
+function isValidPassword(password) {
+  return !containsSpace(password)
+    && containsNonAlphanumeric(password)
+    && containsUppercaseLetter(password)
+    && containsLowercaseLetter(password);
+}
+
+const person = {
+  firstName: '',
+  lastName: '',
+  age: 4,
+  school: 'preschool',
+
+  fullName: function() {
+    return `${this.firstName} ${this.lastName}`;
+  },
+
+  ageUp: function(yearsPassed = 1) {
+    this.age += yearsPassed;
+    
+    if (this.age < 5) {
+      this.school = 'preschool'
+    } else if (this.age >= 5 && this.age <= 10) {
+      this.school = 'elementary school';
+    } else if (this.age >= 11 && this.age <= 13) {
+      this.school = 'middle school';
+    } else if (this.age >= 14 && this.age <= 17) {
+      this.school = 'high school';
+    } else if (this.age >= 18 && this.age <= 21) {
+      this.school = 'college';
+    } else {
+      this.school = 'graduate'
+    }
+  }
+}
+
 module.exports = {
   isDivisible,
   halfSquare,
@@ -139,10 +244,14 @@ module.exports = {
   exclaim,
   titleCase,
   isLong,
-  isShort,
   punchyTitles,
   shorten,
   randomIntegerInRange,
   digits,
   containsDigit,
+  containsLowercaseLetter,
+  containsUppercaseLetter,
+  containsNonAlphanumeric,
+  isValidPassword,
+  person,
 }
