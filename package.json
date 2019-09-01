@@ -1,0 +1,24 @@
+{
+  "name": "extra-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "jasmine": "^3.4.0"
+  },
+  "scripts": {
+    "test": "jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abbreviatedman/extra-test.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abbreviatedman/extra-test/issues"
+  },
+  "homepage": "https://github.com/abbreviatedman/extra-test#readme"
+}
